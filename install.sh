@@ -301,7 +301,7 @@ if [ ! -d "$SCRIPTS_DIR" ]; then
 fi
 
 # Ensure scripts are executable
-chmod +x "$SCRIPTS_DIR/install_moonraker.sh" || exit_on_error "Failed to make install_moonraker.sh executable"
+chmod +x "$SCRIPTS_DIR/install_mnrk.sh" || exit_on_error "Failed to make install_mnrk.sh executable"
 chmod +x "$SCRIPTS_DIR/setup_nginx.sh" || exit_on_error "Failed to make setup_nginx.sh executable"
 
 # Create moonrakeruser if it doesn't exist
@@ -315,9 +315,9 @@ fi
 # Ensure moonrakeruser has ownership of the /usr/data directory
 chown -R moonrakeruser:moonrakeruser /usr/data
 
-# Run the install_moonraker.sh script directly (not as moonrakeruser)
-echo "Running install_moonraker.sh..."
-sh "$SCRIPTS_DIR/install_moonraker.sh" || exit_on_error "Failed to run install_moonraker.sh"
+# Run the install_mnrk.sh script directly (not as moonrakeruser)
+echo "Running install_mnrk.sh..."
+sh "$SCRIPTS_DIR/install_mnrk.sh" || exit_on_error "Failed to run install_mnrk.sh"
 
 echo "Installation complete! Mainsail and Fluidd are installed."
 echo "You can access Mainsail at http://your_printer_ip:4409 and Fluidd at http://your_printer_ip:4408"
