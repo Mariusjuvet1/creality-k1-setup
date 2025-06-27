@@ -66,16 +66,16 @@ cd /usr/data/creality-k1-setup || exit_on_error "Failed to navigate to setup dir
 
 # Download main files
 echo "Downloading main installation files..."
-wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/install.sh || exit_on_error "Failed to download install.sh"
-wget --no-check-certificate -O config.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/config.sh || exit_on_error "Failed to download config.sh"
+wget --no-check-certificate -O install.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/install.sh || exit_on_error "Failed to download install.sh"
+wget --no-check-certificate -O config.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/config.sh || exit_on_error "Failed to download config.sh"
 
 # Download script files
 echo "Downloading script files..."
 cd /usr/data/creality-k1-setup/scripts || exit_on_error "Failed to navigate to scripts directory"
-wget --no-check-certificate -O install_moonraker.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/scripts/install_moonraker.sh || exit_on_error "Failed to download install_moonraker.sh"
-wget --no-check-certificate -O setup_nginx.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/scripts/setup_nginx.sh || exit_on_error "Failed to download setup_nginx.sh"
-wget --no-check-certificate -O install_ui_only.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/scripts/install_ui_only.sh || exit_on_error "Failed to download install_ui_only.sh"
-wget --no-check-certificate -O verify_packages.sh https://raw.githubusercontent.com/Mariusjuvet1/creality-k1-setup/main/scripts/verify_packages.sh || exit_on_error "Failed to download verify_packages.sh"
+wget --no-check-certificate -O install_mnrk.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/scripts/install_mnrk.sh || exit_on_error "Failed to download install_moonraker.sh"
+wget --no-check-certificate -O setup_nginx.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/scripts/setup_nginx.sh || exit_on_error "Failed to download setup_nginx.sh"
+wget --no-check-certificate -O install_ui_only.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/scripts/install_ui_only.sh || exit_on_error "Failed to download install_ui_only.sh"
+wget --no-check-certificate -O verify_packages.sh https://raw.githubusercontent.com/Exieros/creality-k1-setup/main/scripts/verify_packages.sh || exit_on_error "Failed to download verify_packages.sh"
 
 step "Setting executable permissions"
 chmod +x /usr/data/creality-k1-setup/install.sh || exit_on_error "Failed to set permissions on install.sh"
