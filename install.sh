@@ -26,7 +26,7 @@ fi
 export PATH=$PATH:/opt/bin:/opt/sbin
 
 # Ensure necessary system packages are installed
-echo "Checking and installing required system packages..."
+echo "Checking and installing required system packages and updates..."
 /opt/bin/opkg update
 /opt/bin/opkg install sudo bash
 
@@ -171,6 +171,9 @@ else
     echo "Python version is $python_version, which is compatible."
 fi
 
+#pip error on 19 update to fix 
+pip3 install --upgrade pip
+
 # Function to check if a Python package is installed
 is_python_package_installed() {
     pip3 show "$1" > /dev/null 2>&1
@@ -307,6 +310,10 @@ chmod +x "$SCRIPTS_DIR/setup_nginx.sh" || exit_on_error "Failed to make setup_ng
 # Create moonrakeruser if it doesn't exist
 if ! id "moonrakeruser" >/dev/null 2>&1; then
     echo "Creating user moonrakeruser..."
+    #check if /home exists and if not make it
+    if [ ! -d "$DIRECTORY" ]; then
+      mkdir /home
+    fi
     adduser -h /usr/data/home/moonrakeruser -D moonrakeruser || exit_on_error "Failed to create user moonrakeruser"
 else
     echo "User moonrakeruser already exists."
