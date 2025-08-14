@@ -20,7 +20,7 @@ sleep 1
 if [ ! -f "/opt/sbin/nginx" ]; then
     # Install Nginx via Entware
     echo "Installing Nginx via opkg..."
-    opkg install nginx || exit_on_error "Failed to install Nginx"
+    /opt/bin/opkg install nginx || exit_on_error "Failed to install Nginx"
 fi
 
 # Create Nginx directories
