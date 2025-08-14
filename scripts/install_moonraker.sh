@@ -60,15 +60,15 @@ force_cleanup() {
     # Kill all Moonraker processes - find them by various methods
     log "Terminating all Moonraker instances..."
     
-    # Method 1: Kill by name pattern
-    ps | grep -v grep | grep -E 'moonraker|python.*moonraker' | while read line; do
+    # Method 1: Kill by name pattern but exclude .sh so this script doesn't die 
+    ps | grep -v "grep\|install_moonraker.sh" | grep -E 'moonraker|python.*moonraker' | while read line; do
         pid=$(echo $line | awk '{print $1}')
         log "Found process PID $pid, terminating..."
         kill -9 $pid 2>/dev/null || true
     done
     
-    # Method 2: Kill all python processes that might be running moonraker
-    ps | grep -v grep | grep python | grep -v "$0" | while read line; do
+    # Method 2: Kill all python processes that might be running moonraker but don't kill grep or running .sh files
+    ps | grep -v "grep\|install_moonraker.sh" | grep python | grep -v "$0" | while read line; do
         pid=$(echo $line | awk '{print $1}')
         cmdline=$(cat /proc/$pid/cmdline 2>/dev/null || echo "")
         if echo "$cmdline" | grep -q moonraker; then
